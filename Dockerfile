@@ -1,5 +1,7 @@
 FROM alpine:3.5
 
+ENV TERM xterm
+
 RUN apk update && \
     apk add ca-certificates && \
     update-ca-certificates && \
@@ -8,6 +10,6 @@ RUN apk update && \
     unzip ngrok-stable-linux-amd64.zip && \
     mv -v ngrok /usr/sbin/ && \
     rm -v ngrok-stable-linux-amd64.zip && \
-    apk del ca-certificates 
+    apk del ca-certificates
 
 ENTRYPOINT ["/usr/sbin/ngrok"]
